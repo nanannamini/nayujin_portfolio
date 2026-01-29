@@ -358,6 +358,17 @@ img {
     aspect-ratio: 2 / 1;
 }
 
+.gallery-row.single .gallery-item.auto-height {
+    aspect-ratio: auto;
+}
+
+.gallery-item.auto-height img {
+    position: static;
+    width: 100%;
+    height: auto;
+    object-fit: unset;
+}
+
 .gallery-row.single .gallery-item.video-item {
     width: 30%;
     margin: 0 auto;
