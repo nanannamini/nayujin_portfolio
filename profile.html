@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YUJIN - Visual & Brand Designer</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Hero Section */
+        .profile-hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 120px 40px 80px;
+            text-align: center;
+        }
+
+        .profile-hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 32px;
+            max-width: 600px;
+        }
+
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: #f5f5f5;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .profile-image {
+                background-color: #1a1a1a;
+            }
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-name {
+            font-size: clamp(48px, 8vw, 72px);
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            line-height: 1;
+            margin: 0;
+        }
+
+        .profile-title {
+            font-size: 14px;
+            font-weight: 400;
+            color: #666;
+            margin: 0;
+            letter-spacing: 0.1em;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .profile-title {
+                color: #999;
+            }
+        }
+
+        .profile-bio {
+            font-size: 15px;
+            line-height: 1.9;
+            color: #555;
+            max-width: 600px;
+            text-align: left;
+        }
+
+        .profile-bio p {
+            margin-bottom: 16px;
+        }
+
+        .profile-bio p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .profile-bio {
+                color: #aaa;
+            }
+        }
+
+        /* Stats Section */
+        .profile-stats {
+            display: flex;
+            gap: 48px;
+            margin-top: 24px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 4px;
+        }
+
+        /* Resume Section */
+        .profile-resume {
+            padding: 80px 40px 120px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #999;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        /* Career Timeline */
+        .career-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto 80px;
+        }
+
+        .career-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #000 0%, #ddd 100%);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .career-timeline::before {
+                background: linear-gradient(to bottom, #fff 0%, #333 100%);
+            }
+        }
+
+        .career-item {
+            position: relative;
+            padding: 24px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .career-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .career-item:nth-child(odd) .career-content {
+            text-align: right;
+            padding-right: 60px;
+            padding-left: 0;
+        }
+
+        .career-item:nth-child(even) .career-content {
+            text-align: left;
+            padding-left: 60px;
+        }
+
+        .career-content {
+            flex: 1;
+        }
+
+        .career-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 14px;
+            height: 14px;
+            background: #000;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            z-index: 1;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .career-dot {
+                background: #fff;
+                border-color: #000;
+            }
+        }
+
+        .career-date {
+            font-size: 13px;
+            font-weight: 500;
+            color: #888;
+            margin-bottom: 8px;
+        }
+
+        .career-company {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .career-role {
+            font-size: 14px;
+            color: #666;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .career-role {
+                color: #999;
+            }
+        }
+
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .info-section h3 {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #000;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .info-section h3 {
+                border-bottom-color: #fff;
+            }
+        }
+
+        .info-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+
+        .info-year {
+            font-size: 13px;
+            font-weight: 500;
+            color: #888;
+            min-width: 70px;
+            flex-shrink: 0;
+        }
+
+        .info-text {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #444;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .info-text {
+                color: #bbb;
+            }
+        }
+
+        /* Skills Section */
+        .skills-section {
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .skill-tag {
+            padding: 10px 20px;
+            background: #f5f5f5;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .skill-tag {
+                background: #222;
+            }
+        }
+
+        /* Contact Section */
+        .profile-contact {
+            text-align: center;
+            padding: 60px 40px 80px;
+            border-top: 1px solid #eee;
+            margin-top: 40px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .profile-contact {
+                border-top-color: #333;
+            }
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 24px;
+        }
+
+        .contact-links a {
+            font-size: 14px;
+            font-weight: 500;
+            padding: 12px 28px;
+            border: 1px solid #000;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .contact-links a {
+                border-color: #fff;
+            }
+
+            .contact-links a:hover {
+                background-color: #fff;
+                color: #000;
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .profile-hero {
+                padding: 100px 20px 60px;
+            }
+
+            .profile-image {
+                width: 140px;
+                height: 140px;
+            }
+
+            .profile-stats {
+                gap: 32px;
+            }
+
+            .stat-number {
+                font-size: 24px;
+            }
+
+            .profile-resume {
+                padding: 60px 20px 80px;
+            }
+
+            .career-timeline::before {
+                left: 20px;
+            }
+
+            .career-item,
+            .career-item:nth-child(odd) {
+                flex-direction: row;
+            }
+
+            .career-content,
+            .career-item:nth-child(odd) .career-content {
+                text-align: left;
+                padding-left: 50px;
+                padding-right: 0;
+            }
+
+            .career-dot {
+                left: 20px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 16px;
+            }
+
+            .contact-links a {
+                width: 200px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="header-left">
+                <button class="theme-toggle" id="theme-toggle">☀</button>
+                <a href="profile.html" class="header-year">©YUJIN</a>
+                <a href="index.html" class="logo">WORK</a>
+            </div>
+            <button class="menu-btn">Menu <span class="menu-dot">●</span></button>
+        </div>
+    </header>
+
+    <!-- Full Screen Menu Overlay -->
+    <div class="menu-overlay">
+        <button class="menu-close">Close</button>
+        <nav class="menu-nav">
+            <a href="index.html">Home</a>
+            <a href="index.html">Works</a>
+            <a href="about.html">About</a>
+            <a href="resume.html">Resume</a>
+        </nav>
+        <div class="menu-footer">
+            <div class="menu-social">
+                <a href="#">Instagram</a>
+                <a href="#">Behance</a>
+                <a href="#">LinkedIn</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="profile-hero">
+        <div class="profile-hero-content">
+            <div class="profile-image">
+                <img src="nayujin/profile.png" alt="나유진 Profile">
+            </div>
+
+            <div>
+                <h1 class="profile-name">나유진</h1>
+                <p class="profile-title">VISUAL & BRAND DESIGNER</p>
+                <p class="profile-title" style="margin-top: 8px;">1993.10.14</p>
+            </div>
+
+            <div class="profile-bio">
+                <p>저는 브랜딩, 패션 웹디자인 분야에서 6년 9개월의 경력을 가지고 있습니다.</p>
+
+                <p>처음에는 패션 인하우스 브랜드에서 주임까지 직책을 가지고 웹디자인 업무를 담당했습니다. 브랜드의 감도에 맞는 톤 보정, 상세 작업, 자사몰 관리, 모델 보정, 광고 이미지 작업을 했습니다.</p>
+
+                <p>최근까지 회사 (주)마노모스에서 대리로서 디자인팀을 이끌었으며, 웹디자인, 패키지 디자인, 화보 촬영, BX 등 다양한 시각적 브랜딩 업무를 담당했습니다.</p>
+
+                <p>브랜딩 업무를 통해 홍보물 제작, 편집 디자인, UI/UX 디자인 등 다양한 분야에서 경험을 쌓았습니다. 고객들의 요구에 맞춰 창의적이고 효과적인 디자인을 제공하여 브랜드 가치를 높이는 것이 제 역할이라고 생각합니다. 항상 새로운 트렌드와 기술을 열정적으로 학습하며, 최고의 결과물을 만들기 위해 노력합니다.</p>
+
+                <p>디자이너로서 다양한 경험을 토대로, 회사의 브랜드 가치를 높이는데 기여하고 싶습니다. 감도 있고 창의적인 디자인 업무들로 브랜드를 찾는 고객들에게 긍정적인 인상을 전달하며, 회사의 성장과 발전에 기여하고 싶습니다. 함께 일하는 동료들과 협력하여 더 나은 결과물을 만들어내는 것을 목표로 삼고 있습니다.</p>
+            </div>
+
+            <div class="profile-stats">
+                <div class="stat-item">
+                    <div class="stat-number">6.9</div>
+                    <div class="stat-label">Years Exp.</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">20+</div>
+                    <div class="stat-label">Projects</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Awards</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section class="profile-resume">
+        <!-- Career Timeline -->
+        <p class="section-title">Career</p>
+        <div class="career-timeline">
+            <div class="career-item">
+                <div class="career-dot"></div>
+                <div class="career-content">
+                    <div class="career-date">2022.06 - 2024.11 · 2년 6개월</div>
+                    <div class="career-company">(주)마노모스</div>
+                    <div class="career-role">디자인팀 대리/팀장</div>
+                    <div class="career-role">웹디자인, 패키지 디자인, 화보촬영, BX</div>
+                </div>
+            </div>
+            <div class="career-item">
+                <div class="career-dot"></div>
+                <div class="career-content">
+                    <div class="career-date">2021.03 - 2022.06 · 1년 4개월</div>
+                    <div class="career-company">퍼스트브랜드코퍼레이션</div>
+                    <div class="career-role">웹디자인팀 주임</div>
+                </div>
+            </div>
+            <div class="career-item">
+                <div class="career-dot"></div>
+                <div class="career-content">
+                    <div class="career-date">2019.11 - 2021.03 · 1년 5개월</div>
+                    <div class="career-company">주식회사 피더블유디</div>
+                    <div class="career-role">웹디자인, 편집 디자인, 비주얼 디자인</div>
+                </div>
+            </div>
+            <div class="career-item">
+                <div class="career-dot"></div>
+                <div class="career-content">
+                    <div class="career-date">2018.03 - 2019.03 · 1년 1개월</div>
+                    <div class="career-company">(주)마노모스</div>
+                    <div class="career-role">아이웨어 브랜드 비주얼 디자인</div>
+                </div>
+            </div>
+            <div class="career-item">
+                <div class="career-dot"></div>
+                <div class="career-content">
+                    <div class="career-date">2017.07 - 2017.11 · 5개월</div>
+                    <div class="career-company">주식회사어나더 (Anotherinc.)</div>
+                    <div class="career-role">브랜딩, CI/BI 디자인</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Education & Awards Grid -->
+        <div class="info-grid">
+            <div class="info-section">
+                <h3>Education</h3>
+                <div class="info-item">
+                    <span class="info-year">2017</span>
+                    <span class="info-text">서강대학교 시각디자인학과 졸업</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-year">2014</span>
+                    <span class="info-text">명지전문대 일본어학과 졸업</span>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h3>Awards & Certifications</h3>
+                <div class="info-item">
+                    <span class="info-year">2019</span>
+                    <span class="info-text">장수헬스케어 BI 디자인 2등 수상 / 라우드소싱</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-year">2017</span>
+                    <span class="info-text">패키지 디자인 finalist 진출 / 대한민국 디자인 전람회</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-year">2017</span>
+                    <span class="info-text">무역 광고 공모전 대상 / 한국무역보험공사</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-year">2016</span>
+                    <span class="info-text">컬러리스트산업기사 / 한국산업인력공단</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="skills-section">
+            <p class="section-title">Skills</p>
+            <div class="skills-grid">
+                <span class="skill-tag">Branding</span>
+                <span class="skill-tag">Web Design</span>
+                <span class="skill-tag">Package Design</span>
+                <span class="skill-tag">Visual Direction</span>
+                <span class="skill-tag">UI/UX Design</span>
+                <span class="skill-tag">Editorial Design</span>
+                <span class="skill-tag">Photo Retouching</span>
+                <span class="skill-tag">BX Design</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="profile-contact">
+        <p class="section-title">Get in Touch</p>
+        <div class="contact-links">
+            <a href="index.html">View Works</a>
+            <a href="mailto:dkdldldqj@gmail.com">Contact Me</a>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
