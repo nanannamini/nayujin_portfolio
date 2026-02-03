@@ -5,3 +5,4 @@
 .DS_Store
 # Allow specific mov file for 02.html
 !2025/ddp/movie.mov
+.vercel

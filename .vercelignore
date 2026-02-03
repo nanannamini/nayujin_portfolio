@@ -1,0 +1,8 @@
+# Large video files
+*.mp4
+*.mov
+*.avi
+*.mkv
+
+# Git
+.git
